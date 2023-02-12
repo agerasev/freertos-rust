@@ -66,7 +66,6 @@ mod hooks;
 mod prelude;
 mod shim;
 
-#[cfg(feature = "allocator")]
 mod allocator;
 mod base;
 #[cfg(feature = "sync")]
@@ -97,7 +96,6 @@ pub use crate::base::*;
 pub use crate::shim::*;
 // ----------
 
-#[cfg(feature = "allocator")]
 pub use crate::allocator::*;
 pub use crate::base::FreeRtosError;
 #[cfg(feature = "sync")]
