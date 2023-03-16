@@ -15,11 +15,8 @@ pub enum FreeRtosError {
 
 unsafe impl Send for CVoid {}
 
-#[repr(u32)]
-pub enum CVoid {
-    _Variant1,
-    _Variant2,
-}
+#[repr(transparent)]
+pub struct CVoid(core::ffi::c_void);
 
 pub type FreeRtosVoidPtr = *const CVoid;
 pub type FreeRtosMutVoidPtr = *mut CVoid;
