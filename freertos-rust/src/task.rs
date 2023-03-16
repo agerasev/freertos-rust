@@ -134,7 +134,7 @@ impl Task {
         let (success, task_handle) = {
             let name = name.as_bytes();
             let name_len = name.len();
-            let mut task_handle = mem::zeroed::<CVoid>();
+            let mut task_handle = mem::zeroed::<FreeRtosTaskHandle>();
 
             let ret = freertos_rs_spawn_task(
                 thread_start,
@@ -170,9 +170,7 @@ impl Task {
             0 as *mut _
         }
 
-        Ok(Task {
-            task_handle: task_handle as usize as *const _,
-        })
+        Ok(Task { task_handle })
     }
 
     fn spawn<F>(
